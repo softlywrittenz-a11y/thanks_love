@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You, Ekal 🤍✨</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Warm Neutral Pastel Gradient */
+            background: linear-gradient(135deg, #fdfbf7 0%, #f3eee7 50%, #eae3d9 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #4a403a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Background Icons */
+        .sky-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 20px;
+            pointer-events: none;
+            animation: floatIcon 9s linear infinite;
+            opacity: 0.75;
+        }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.85; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glassmorphism Neutral Card */
+        .container {
+            width: 100%;
+            max-width: 390px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 28px;
+            padding: 30px 22px;
+            box-shadow: 0 15px 35px rgba(110, 95, 85, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #f0e9df;
+            color: #8c7a6b;
+            border: 1px solid #e2d7c9;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .icon-header {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #4a403a;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        /* Card Content Box */
+        .quote-card {
+            background-color: #ffffff;
+            border: 1.5px dashed #d8ccbc;
+            border-radius: 22px;
+            padding: 22px 18px;
+            margin-bottom: 22px;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(160, 140, 125, 0.06);
+        }
+
+        .quote-text {
+            font-size: 13.5px;
+            color: #5a5049;
+            line-height: 1.75;
+            font-weight: 500;
+        }
+
+        /* Main Buttons */
+        .btn-send {
+            width: 100%;
+            background: linear-gradient(135deg, #8c7a6b 0%, #6e5f55 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+            box-shadow: 0 4px 14px rgba(110, 95, 85, 0.2);
+        }
+
+        .btn-send:active {
+            transform: scale(0.98);
+        }
+
+        .btn-send:hover {
+            opacity: 0.95;
+        }
+
+        /* End Screen */
+        .success-card {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar Belakang Melayang (Neutral Warm Icons) -->
+    <div class="sky-container" id="skyContainer"></div>
+
+    <!-- Container Utama -->
+    <div class="container" id="mainCard">
+        <span class="badge" id="stepBadge">SLIDE 1 DARI 5 🤍✨</span>
+        <div class="icon-header" id="slideIcon">🤍🌿</div>
+        <h1 id="slideTitle">Thank You, Ekal 🤍</h1>
+
+        <div class="quote-card">
+            <p class="quote-text" id="slideContent">
+                Loading pesan buat kamu...
+            </p>
+        </div>
+
+        <button class="btn-send" id="btnNext" onclick="handleNext()">Lanjut Baca ➔</button>
+    </div>
+
+    <!-- Layar Akhir -->
+    <div class="container success-card" id="successCard">
+        <div class="icon-header">☕🤍🧸</div>
+        <h1>Always Grateful For You 🤍✨</h1>
+
+        <div class="quote-card" style="margin-bottom: 0;">
+            <p class="quote-text">
+                Thank you for existing and for being the kindest part of my life. Aku janji bakal terus berusaha buat bikin kamu bahagia dan nyaman terus bareng aku. I love you so much, Ekal! 🤍🌿
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 5 Slide Ucapan Terima Kasih (Warm Neutral Theme)
+        const slides = [
+            {
+                icon: "🤍🌿",
+                title: "Makasih Udah Mau Nerima Aku 🤍",
+                content: "First of all, makasih banyak yaa Ekal udah mau nerima aku apa adanya. Makasih udah mau ngebuka pintu dan izinin aku buat jadi bagian penting di hidup kamu. Having you by my side means the absolute world to me ✨"
+            },
+            {
+                icon: "🤝🤍",
+                title: "Makasih Udah Percaya Sama Aku 🤍",
+                content: "Makasih banyak yaa udah percaya buat jadiin aku pasangan kamu dan mau ngejalanin relationship ini bareng-bareng. I really appreciate your trust, and I'll do my best to take good care of your heart 🕊️✨"
+            },
+            {
+                icon: "🧸☕",
+                title: "Makasih Buat Kesabaran Kamu 🤍",
+                content: "Makasih yaa udah selalu sabar ngadepin aku, ngadepin segala tingkah atau sifat aku yang kadang suka bikin pusing wkwk. Your patience and kindness never fail to touch my heart ☕✨"
+            },
+            {
+                icon: "☁️🤍",
+                title: "My Safe & Comfortable Place ✨",
+                content: "Nggak pernah terpikirkan sebelumnya aku bisa ngerasa senyaman ini sama seseorang. Sama kamu, aku bisa jadi diri aku sendiri tanpa rasa takut. Thank you for making me feel so safe and cherished, Kal 🤍"
+            },
+            {
+                icon: "🤍🧸",
+                title: "Mari Tumbuh Bareng Terus Yaa 🤍",
+                content: "Semoga kita bisa terus saling paham, saling melengkapi, dan melewati banyak hal manis bareng-bareng yaa. Thank you for being my girlfriend and my favorite person forever! 🤍🌿"
+            }
+        ];
+
+        let currentStep = 0;
+
+        function loadSlide() {
+            const s = slides[currentStep];
+            document.getElementById('stepBadge').innerText = `SLIDE ${currentStep + 1} DARI 5 🤍✨`;
+            document.getElementById('slideIcon').innerText = s.icon;
+            document.getElementById('slideTitle').innerText = s.title;
+            document.getElementById('slideContent').innerText = s.content;
+
+            if (currentStep === slides.length - 1) {
+                document.getElementById('btnNext').innerText = "Lihat Penutup 🤍";
+            } else {
+                document.getElementById('btnNext').innerText = "Lanjut Baca ➔";
+            }
+        }
+
+        function handleNext() {
+            if (currentStep < slides.length - 1) {
+                currentStep++;
+                loadSlide();
+            } else {
+                document.getElementById('mainCard').style.display = "none";
+                document.getElementById('successCard').style.display = "block";
+            }
+        }
+
+        // Generate Warm Neutral Floating Icons
+        const skyContainer = document.getElementById('skyContainer');
+        const icons = ['🤍', '✨', '🧸', '☕', '🍃', '☁️', '🤍', '🌿'];
+        
+        for (let i = 0; i < 26; i++) {
+            const el = document.createElement('div');
+            el.classList.add('floating-icon');
+            el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 5 + 6) + 's';
+            el.style.animationDelay = Math.random() * 5 + 's';
+            skyContainer.appendChild(el);
+        }
+
+        loadSlide();
+    </script>
+</body>
+</html>
